@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang=en><head>
+  <meta charset=utf-8>
+  <link rel="icon" href="data:image/png;base64," />
+  <title>Here's your guid</title>
+  <style>
+    body {margin: 0;}
+    main {
+      position: absolute;
+      width: 100%;
+      text-align: center;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 48px;
+      font-family: monospace;
+    }
+    footer {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+    }
+  </style>
+</head><body>
+  <main>
+    <script>
+      const hexQuad = n => Number(n).toString(16).padStart(4, '0');
+      const hexadecitets = window.crypto.getRandomValues(new Uint16Array(8));
+      document.write(
+        hexQuad(hexadecitets[0]) + hexQuad(hexadecitets[1]) + '-'
+        + hexQuad(hexadecitets[2]) + '-'
+        + hexQuad(0x4000 | (hexadecitets[3] & 0x0fff)) + '-'
+        + hexQuad(0x8000 | (hexadecitets[4] & 0x3fff)) + '-'
+        + hexQuad(hexadecitets[5]) + hexQuad(hexadecitets[6]) + hexQuad(hexadecitets[7])
+      );
+    </script>
+  </main>
+</body></html>
